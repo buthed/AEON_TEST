@@ -1,23 +1,24 @@
-package com.tematihonov.aeon_test.presentation.fragments
+package com.tematihonov.aeon_test.presentation.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.tematihonov.aeon_test.databinding.FragmentLoginBinding
+import com.tematihonov.aeon_test.databinding.FragmentPaymentsBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
+class PaymentsFragment : Fragment() {
 
-class LoginFragment : Fragment() {
-
-    private var _binding: FragmentLoginBinding? = null
+    private var _binding: FragmentPaymentsBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentLoginBinding.inflate(inflater, container,false)
+        _binding = FragmentPaymentsBinding.inflate(inflater, container,false)
         return binding.root
     }
 
