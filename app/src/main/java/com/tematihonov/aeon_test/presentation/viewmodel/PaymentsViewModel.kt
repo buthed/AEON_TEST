@@ -1,10 +1,10 @@
 package com.tematihonov.aeon_test.presentation.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.tematihonov.aeon_test.data.models.User
-import com.tematihonov.aeon_test.domain.models.responseToken.ResponseToken
+import com.tematihonov.aeon_test.domain.models.responsePayments.ResponsePayments
 import com.tematihonov.aeon_test.domain.usecase.NetworkUseCase
 import com.tematihonov.aeon_test.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,20 +14,21 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(
+class PaymentsViewModel @Inject constructor(
     private val networkUseCase: NetworkUseCase
 ): ViewModel() {
 
-    val loginResponseToken = MutableLiveData<Resource<ResponseToken>>()
+    val responsePayments = MutableLiveData<Resource<ResponsePayments>>()
 
-    fun login(userLogin: String, userPassword: String) {
+    fun getUsersPayments(usersToken: String) {
         viewModelScope.launch {
-            networkUseCase.postLoginUseCase.invoke(User(userLogin, userPassword)).onStart {
-                loginResponseToken.postValue(Resource.Loading())
+            networkUseCase.getPaymentsUseCase.invoke(usersToken).onStart {
+                responsePayments.postValue(Resource.Loading())
             }.catch {
-                loginResponseToken.postValue(Resource.Error(it.message!!))
+                responsePayments.postValue(Resource.Error(it.message!!))
             }.collect {
-                loginResponseToken.postValue(Resource.Success(it))
+                responsePayments.postValue(Resource.Success(it))
+                Log.d("GGG","${it.response}")
             }
         }
     }

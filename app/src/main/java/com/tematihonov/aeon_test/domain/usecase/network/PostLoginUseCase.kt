@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
-
 class PostLoginUseCase @Inject constructor(
     private val networkRepository: NetworkRepository
 ) {

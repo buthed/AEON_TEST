@@ -3,6 +3,7 @@ package com.tematihonov.aeon_test.di
 import com.tematihonov.aeon_test.data.repositoryImpl.NetworkRepositoryImpl
 import com.tematihonov.aeon_test.domain.repository.NetworkRepository
 import com.tematihonov.aeon_test.domain.usecase.NetworkUseCase
+import com.tematihonov.aeon_test.domain.usecase.network.GetPaymentsUseCase
 import com.tematihonov.aeon_test.domain.usecase.network.PostLoginUseCase
 import dagger.Module
 import dagger.Provides
@@ -24,7 +25,8 @@ object UseCaseModule {
     @Provides
     fun provideNetworkUseCases(networkRepository: NetworkRepository): NetworkUseCase {
         return NetworkUseCase(
-            postLoginUseCase = PostLoginUseCase(networkRepository)
+            postLoginUseCase = PostLoginUseCase(networkRepository),
+            getPaymentsUseCase = GetPaymentsUseCase(networkRepository)
         )
     }
 }

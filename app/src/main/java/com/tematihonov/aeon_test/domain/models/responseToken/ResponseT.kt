@@ -1,5 +1,5 @@
 package com.tematihonov.aeon_test.domain.models.responseToken
 
-data class Response(
+data class ResponseT(
     val token: String
 )

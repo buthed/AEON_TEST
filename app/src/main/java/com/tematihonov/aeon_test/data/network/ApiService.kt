@@ -7,6 +7,7 @@ import com.tematihonov.aeon_test.utils.RetrofitConstants.LOGIN
 import com.tematihonov.aeon_test.utils.RetrofitConstants.PAYMENTS
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.Headers
 import retrofit2.http.POST
 
@@ -20,10 +21,18 @@ interface ApiService {
     suspend fun postLogin(@Body user: User): ResponseToken
 
 
+//    @Headers(
+//        "app-key: 12345",
+//        "v: 1",
+//        "token: 7b7c0a690bee2e8d90512ed1b57e19f0"
+//    )
+//    @GET(PAYMENTS)
+//    suspend fun getPayments(): ResponsePayments
+
     @Headers(
         "app-key: 12345",
         "v: 1"
     )
     @GET(PAYMENTS)
-    fun getPayments(): ResponsePayments
+    suspend fun getPayments(@Header("token") token: String): ResponsePayments
 }

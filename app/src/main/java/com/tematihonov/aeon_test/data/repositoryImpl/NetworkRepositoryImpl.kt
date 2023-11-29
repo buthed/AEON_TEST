@@ -17,8 +17,7 @@ class NetworkRepositoryImpl @Inject constructor(
         return apiService.postLogin(user = user)
     }
 
-    override fun getPayments(): ResponsePayments {
-        TODO("Not yet implemented")
+    override suspend fun getPayments(token: String): ResponsePayments {
+        return apiService.getPayments(token = token)
     }
-
 }

@@ -8,5 +8,5 @@ interface NetworkRepository {
 
     suspend fun postLogin(user: User): ResponseToken
 
-    fun getPayments(): ResponsePayments
+    suspend fun getPayments(token: String): ResponsePayments
 }

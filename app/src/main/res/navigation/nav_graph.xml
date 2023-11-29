@@ -18,5 +18,12 @@
         android:id="@+id/paymentsFragment"
         android:name="com.tematihonov.aeon_test.presentation.ui.fragment.PaymentsFragment"
         android:label="fragment_payments"
-        tools:layout="@layout/fragment_payments" />
+        tools:layout="@layout/fragment_payments" >
+        <argument
+            android:name="userName"
+            app:argType="string" />
+        <argument
+            android:name="userToken"
+            app:argType="string" />
+    </fragment>
 </navigation>

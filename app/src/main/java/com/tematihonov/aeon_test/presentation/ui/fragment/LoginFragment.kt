@@ -6,8 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import com.tematihonov.aeon_test.R
+import androidx.navigation.Navigation
 import com.tematihonov.aeon_test.databinding.FragmentLoginBinding
 import com.tematihonov.aeon_test.presentation.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,13 +35,18 @@ class LoginFragment : Fragment() {
                 userPassword = binding.edPassword.text.toString().trim())
         }
 
-
         loginViewModel.loginResponseToken.observe(viewLifecycleOwner) {
             if (it.data != null) {
-                if (it.data.success == "true") {
-                    findNavController().navigate(R.id.action_loginFragment_to_paymentsFragment)
-                } else {
-                    binding.errorMessage.text = "${it.data.error?.error_msg}"
+                it.data.let { responseToken ->
+                    if (responseToken.success == "true") {
+                        val action = LoginFragmentDirections.actionLoginFragmentToPaymentsFragment(
+                            userName = binding.edLogin.text.toString().trim(),
+                            userToken = responseToken.response?.token ?: ""
+                        )
+                        Navigation.findNavController(binding.buttonSignIn).navigate(action)
+                    } else {
+                        binding.errorMessage.text = "${responseToken.error?.error_msg}"
+                    }
                 }
             }
         }
