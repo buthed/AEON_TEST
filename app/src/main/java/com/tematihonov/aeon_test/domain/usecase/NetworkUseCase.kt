@@ -5,5 +5,5 @@ import com.tematihonov.aeon_test.domain.usecase.network.PostLoginUseCase
 
 data class NetworkUseCase(
     val postLoginUseCase: PostLoginUseCase,
-    val getPaymentsUseCase: GetPaymentsUseCase
+    val getPaymentsUseCase: GetPaymentsUseCase,
 )

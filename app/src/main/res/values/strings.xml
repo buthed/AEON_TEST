@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">AEON_TEST</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="check_internet_con">Check Internet connection</string>
 
-<!--  Login screen  -->
+    <!--  Login screen  -->
     <string name="login_hint">Логин</string>
     <string name="password_hint">Пароль</string>
     <string name="sign_in">Войти</string>
@@ -10,7 +10,7 @@
     <string name="sign_up">Зарегистрироваться</string>
     <string name="forgot_password">Забыли пароль?</string>
 
-<!--  Login screen  -->
+    <!--  Payment screen  -->
     <string name="payments_list">Список платежей: </string>
 
 </resources>

@@ -1,59 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ui.fragment.PaymentsFragment"
-    android:orientation="vertical">
-
-    <Toolbar
-        android:id="@+id/app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="49dp">
-
-        <TextView
-            android:id="@+id/toolbar_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="20sp"
-            tools:text="Админ"/>
-
-        <ImageView
-            android:id="@+id/sign_out"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_gravity="end"
-            android:layout_marginEnd="20dp"
-            android:src="@drawable/icon_logout"
-            tools:ignore="ContentDescription" />
-    </Toolbar>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/gray"/>
-
-    <TextView
-        android:text="@string/payments_list"
-        android:layout_marginTop="20dp"
-        android:layout_marginHorizontal="20dp"
-        android:textSize="18sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    tools:context=".presentation.ui.fragment.PaymentsFragment">
 
     <LinearLayout
-        android:layout_marginHorizontal="20dp"
+        android:id="@+id/ll_main"
+        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_payments"
+        <Toolbar
+            android:id="@+id/app_bar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:itemCount="5"
-            tools:listitem="@layout/item_payment"/>
+            android:layout_height="49dp">
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                tools:text="Админ" />
+
+            <ImageView
+                android:id="@+id/sign_out"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/icon_logout"
+                tools:ignore="ContentDescription" />
+        </Toolbar>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray" />
+
+        <TextView
+            android:text="@string/payments_list"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="20dp"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_marginHorizontal="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_payments"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:itemCount="5"
+                tools:listitem="@layout/item_payment" />
+        </LinearLayout>
     </LinearLayout>
 
-</LinearLayout>
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:visibility="visible"
+        android:layout_gravity="center"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:progress="25" />
+
+</FrameLayout>

@@ -18,7 +18,7 @@ object NetworkModule {
     @Singleton
     @Provides
     fun provideNetworkRepositoryImpl(
-        apiService: ApiService
+        apiService: ApiService,
     ) = NetworkRepositoryImpl(apiService)
 
     @Singleton

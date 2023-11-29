@@ -10,8 +10,8 @@ import javax.inject.Singleton
 
 @Singleton
 class NetworkRepositoryImpl @Inject constructor(
-    private val apiService: ApiService
-): NetworkRepository {
+    private val apiService: ApiService,
+) : NetworkRepository {
 
     override suspend fun postLogin(user: User): ResponseToken {
         return apiService.postLogin(user = user)

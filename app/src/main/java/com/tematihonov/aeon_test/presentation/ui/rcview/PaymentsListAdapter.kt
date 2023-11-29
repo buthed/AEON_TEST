@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tematihonov.aeon_test.databinding.ItemPaymentBinding
 import com.tematihonov.aeon_test.domain.models.responsePayments.ResponseP
 
-class PaymentsListAdapter(): RecyclerView.Adapter<PaymentsListAdapter.PaymentsListViewHolder>() {
+class PaymentsListAdapter() : RecyclerView.Adapter<PaymentsListAdapter.PaymentsListViewHolder>() {
 
     var payments: List<ResponseP> = emptyList()
         set(newValue) {
@@ -26,12 +26,19 @@ class PaymentsListAdapter(): RecyclerView.Adapter<PaymentsListAdapter.PaymentsLi
         return PaymentsListViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: PaymentsListAdapter.PaymentsListViewHolder, position: Int) {
+    override fun onBindViewHolder(
+        holder: PaymentsListAdapter.PaymentsListViewHolder,
+        position: Int,
+    ) {
         val payment = payments[position]
         with(holder.binding) {
             paymentTitle.text = payment.title.toString().ifEmpty { "" }
-            paymentCreated.text = payment.created.toString().ifEmpty { "" }
-            paymentAmount.text = payment.amount.toString().ifEmpty { "" }
+            paymentCreated.text =
+                "Created: ${if (payment.created == null || payment.created.toString() == "") "no data" else payment.created.toString()}"
+            paymentAmount.text = "Amount:\n${
+                if (payment.amount == null || payment.amount == "") "no data" else payment.amount.toString()
+                    .take(6)
+            }"
         }
     }
 

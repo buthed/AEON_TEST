@@ -15,8 +15,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val networkUseCase: NetworkUseCase
-): ViewModel() {
+    private val networkUseCase: NetworkUseCase,
+) : ViewModel() {
 
     val loginResponseToken = MutableLiveData<Resource<ResponseToken>>()
 

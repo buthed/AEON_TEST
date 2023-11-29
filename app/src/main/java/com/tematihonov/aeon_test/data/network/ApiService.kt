@@ -20,15 +20,6 @@ interface ApiService {
     @POST(LOGIN)
     suspend fun postLogin(@Body user: User): ResponseToken
 
-
-//    @Headers(
-//        "app-key: 12345",
-//        "v: 1",
-//        "token: 7b7c0a690bee2e8d90512ed1b57e19f0"
-//    )
-//    @GET(PAYMENTS)
-//    suspend fun getPayments(): ResponsePayments
-
     @Headers(
         "app-key: 12345",
         "v: 1"

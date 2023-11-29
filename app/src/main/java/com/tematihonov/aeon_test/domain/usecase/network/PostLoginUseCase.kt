@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 class PostLoginUseCase @Inject constructor(
-    private val networkRepository: NetworkRepository
+    private val networkRepository: NetworkRepository,
 ) {
 
     suspend operator fun invoke(user: User): Flow<ResponseToken> = flow {

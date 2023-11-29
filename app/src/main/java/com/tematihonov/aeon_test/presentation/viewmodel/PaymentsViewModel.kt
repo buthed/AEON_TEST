@@ -15,8 +15,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PaymentsViewModel @Inject constructor(
-    private val networkUseCase: NetworkUseCase
-): ViewModel() {
+    private val networkUseCase: NetworkUseCase,
+) : ViewModel() {
 
     val responsePayments = MutableLiveData<Resource<ResponsePayments>>()
 
@@ -28,7 +28,7 @@ class PaymentsViewModel @Inject constructor(
                 responsePayments.postValue(Resource.Error(it.message!!))
             }.collect {
                 responsePayments.postValue(Resource.Success(it))
-                Log.d("GGG","${it.response}")
+                Log.d("GGG", "${it.response}")
             }
         }
     }
